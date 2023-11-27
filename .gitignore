@@ -1,8 +1,11 @@
-*.csv
 *.xlsx
+<<<<<<< HEAD
 *__pycache__
 *.ipynb
 __pycache__/
 
 /Data
 /src
+=======
+__pycache__/
+>>>>>>> 592a7e427b09cacfea09b5ee2fc2ede19bc6e935
