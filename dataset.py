@@ -1,12 +1,12 @@
 import torch
 from torch.utils.data import Dataset
 
-# For this part, making sure that FuelMassFlow is stored in the 15th column in the csv. 
-# Otherwise change the number '14' and ':14' accordingly
+# Ensure that FuelMassFlow is stored in the last column of the csv. 
+# Using example_dataset, the last column 'FuelMassFlow' is at '9'
 class dds(Dataset):
     def __init__(self, df):
-        x = df.iloc[:, :14].values
-        y = df.iloc[:, 14].values    
+        x = df.iloc[:, :9].values
+        y = df.iloc[:, 9].values    
 
         self.x_tensor = torch.tensor(x, dtype = torch.float32)
         self.y_tensor = torch.tensor(y, dtype = torch.float32).reshape(-1,1)

@@ -1,6 +1,8 @@
+import pandas as pd
 import numpy as np
 import torch
 from torch.utils.data import DataLoader
+
 
 from model import fnn
 from dataset import dds
@@ -9,13 +11,20 @@ N_EPOCHS = 200
 LEARNING_RATE = 0.005
 BATCH_SIZE = 64
 REPORT_EVERY = 1
-input_n = 14
+input_n = 9 # Based on the example_dataset, there are only
 output_n = 1
 HIDDEN_SIZE = 10
 
 ###### Add data
-train_df = None
-val_df = None
+file_path = 'example_dataset.csv' # Example dataset assumes sailing in North Pacific at constant water depth (82), draft (14), SOG(7)
+seed = 20
+split = 0.8
+
+df = pd.read_csv(file_path)
+
+train_df = df.sample(frac = split, random_state = seed)
+val_df=df.drop(train_df.index)
+
 ######
 
 train_ds = dds(train_df)

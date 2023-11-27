@@ -1,12 +1,15 @@
 # Ship Performance Model (NN-SPM)
 NN-SPM estimates ship fuel consumption taking into consideration weather and operational conditions.
 
-## Training Data
-Built based on
-1. Forecasts of fuel consumption generated from systems that are modelling ship energy system
-2. Measurement data from sensors onboard a ship 
 
-Input features:
+## Training Data
+This repository contains 'example_dataset' that was built using:
+1. Weather forecast data collected from NOAA for the experimental area in the North Pacific
+2. Forecasts of FuelMassFlow generated from systems that are modelling ship energy system
+    - Vessel is assumed to sail at constant speed, water depth, draft
+    - For each weather combination, three different COGs are contained with the resulting FuelMassFlow estimate
+
+Input features (n=9):
 - wind speed (m/s)
 - wind direction (degree)
 - significant wave height (m)
@@ -16,12 +19,8 @@ Input features:
 - primary swell period (s)
 - primary swell direction (degree)
 - course over ground (degree)
-- speed over ground ()
-- water depth
-- current speed
-- current direction
 
-Output: Fuel Mass Estimation (kg/s)
+Output (n=1): Fuel Mass Flow (kg/s)
 
 ## Model Architecture and Training Hyperparameters Values
 A fully connected feedforward neural network.
